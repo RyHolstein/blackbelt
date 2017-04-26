@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add a Plan</title>
+  </head>
+  <body>
+    <a href="/travels">Home</a>
+    <a href="/logout">Logout</a>
+    <h1>Add a Trip</h1>
+    {%for message in messages %}
+         {%if "add_trip" in message.tags %}
+              <p> {{message}} </p>
+         {%endif%}
+    {%endfor%}
+    <form class="add_trip" action="/trip_add" method="POST">
+      {% csrf_token %}
+      <label for="destination">Destination:<input type="text" name="destination"></label>
+      <label for="descrip">Description:<input type="text" name="descrip"></label>
+      <label for="start_date">Start Date:<input type="date" name="start_date"></label>
+      <label for="end_date">End Date:<input type="date" name="end_date"></label>
+      <input type="submit" name="submit" value="Submit">
+    </form>
+  </body>
+</html>
